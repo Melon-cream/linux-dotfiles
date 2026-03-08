@@ -1,0 +1,16 @@
+# Neovim plugins / cache
+nvim/.config/nvim/.lazy/
+nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/plugin/
+nvim/.config/nvim/pack/
+nvim/.config/nvim/.mason/
+nvim/.config/nvim/node_modules/
+
+# Zellij generated or local-only files
+zellij/.config/zellij/**/*.log
+zellij/.config/zellij/plugins
+
+# OS / editor
+.DS_Store
+*.swp
+*~
