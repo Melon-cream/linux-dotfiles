@@ -113,14 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# ----- Add by user -----
-# Alias
-alias ll='ls -laF' 
-alias cl='clear'
 
-# Zellij
-export ZELLIJ AUTO EXIT=true
-eval "$(zellij setup --generate-auto-start zsh)"
 # ----- Add by user -----
 # Alias
 alias ll='ls -laF' 
@@ -128,14 +121,6 @@ alias cl='clear'
 
 # path
 export PATH=$PATH:/home/user/.local/bin
-
-# Zellij
-export ZELLIJ AUTO EXIT=true
-eval "$(zellij setup --generate-auto-start zsh)"
-# ----- Add by user -----
-# Alias
-alias ll='ls -laF' 
-alias cl='clear'
 
 # Zellij
 export ZELLIJ AUTO EXIT=true
