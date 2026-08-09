@@ -1,0 +1,62 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "~/.config/opencode/INSTRUCTION.md",
+    "~/.agents/skills/genshijin/SKILL.md"
+  ],
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "rm -f *": "ask",
+      "ntn pages create *": "ask",
+      "ntn pages delete *": "ask",
+      "wget *": "ask",
+      "apt *": "ask",
+      "apt-get *": "ask",
+      "sudo apt *": "ask",
+      "sudo apt-get *": "ask",
+      "npm install *": "ask",
+      "npm i *": "ask",
+      "npm uninstall *": "ask",
+      "npm publish *": "ask",
+      "yarn publish *": "ask",
+      "pnpm publish *": "ask",
+      "bun publish *": "ask",
+      "deno publish *": "ask",
+      "cargo publish *": "ask",
+      "gem push *": "ask",
+      "twine upload *": "ask",
+      "git push *": "ask",
+      "git push --force *": "ask",
+      "gh *": "ask"
+    },
+    "edit": {
+      "*": "allow",
+      "**/.env": "deny",
+      "**/.env.*": "deny",
+      "~/.config/*": "ask",
+      "$HOME/.config/*": "ask",
+      "/etc/wsl.conf": "deny"
+    },
+    "read": {
+      "*": "allow",
+      "**/.env": "deny",
+      "**/.env.*": "deny",
+      "~/.config/*": "ask",
+      "$HOME/.config/*": "ask",
+      "~/.ssh/*": "deny"
+    },
+    "external_directory": {
+      "*": "allow"
+    }
+  },
+  "mcp": {
+    "mcpe": {
+      "type": "remote",
+      "url": "http://localhost:8080/mcp"
+    }
+  },
+  "plugin": [
+    "opencode-rtk"
+  ]
+}

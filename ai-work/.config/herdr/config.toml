@@ -1,0 +1,37 @@
+onboarding = false
+
+[keys]
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+
+[[keys.command]]
+key = "prefix+f"
+type = "shell"
+command = "$HOME/.config/herdr/scripts/bootstrap.sh"
+
+[[keys.command]]
+key = "alt+left"
+type = "shell"
+command = "$HOME/.config/herdr/scripts/herdr-nav.sh left"
+
+[[keys.command]]
+key = "alt+down"
+type = "shell"
+command = "$HOME/.config/herdr/scripts/herdr-nav.sh down"
+
+[[keys.command]]
+key = "alt+up"
+type = "shell"
+command = "$HOME/.config/herdr/scripts/herdr-nav.sh up"
+
+[[keys.command]]
+key = "alt+right"
+type = "shell"
+command = "$HOME/.config/herdr/scripts/herdr-nav.sh right"
+
+[experimental]
+switch_ascii_input_source_in_prefix = false

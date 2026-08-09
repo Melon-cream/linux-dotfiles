@@ -1,0 +1,10 @@
+[tools]
+go = "latest"
+herdr = "latest"
+node = "lts"
+rtk = "latest"
+rust = "latest"
+sheldon = "latest"
+starship = "latest"
+uv = "latest"
+yazi = "latest"

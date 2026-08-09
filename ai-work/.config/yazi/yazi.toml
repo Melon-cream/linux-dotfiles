@@ -1,0 +1,12 @@
+[opener]
+open-to-pane = [
+	{ run = "$HOME/.config/herdr/scripts/yazi-open.sh \"$@\"", spread = true, desc = "Open in herdr left pane", for = "unix" },
+]
+
+[open]
+rules = [
+	{ url = "*/", use = [ "open", "reveal" ] },
+	{ url = "*.md",     use = "open-to-pane" },
+	{ url = "*.markdown", use = "open-to-pane" },
+	{ url = "*",        use = "open-to-pane" },
+]
