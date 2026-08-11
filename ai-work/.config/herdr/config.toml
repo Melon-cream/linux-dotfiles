@@ -19,16 +19,6 @@ type = "shell"
 command = "$HOME/.config/herdr/scripts/herdr-nav.sh left"
 
 [[keys.command]]
-key = "alt+down"
-type = "shell"
-command = "$HOME/.config/herdr/scripts/herdr-nav.sh down"
-
-[[keys.command]]
-key = "alt+up"
-type = "shell"
-command = "$HOME/.config/herdr/scripts/herdr-nav.sh up"
-
-[[keys.command]]
 key = "alt+right"
 type = "shell"
 command = "$HOME/.config/herdr/scripts/herdr-nav.sh right"

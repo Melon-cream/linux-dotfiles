@@ -4,12 +4,26 @@ set -euo pipefail
 DIRECTION="${1:?usage: herdr-nav.sh <left|right|up|down>}"
 BIN="${HERDR_BIN_PATH:-herdr}"
 
-focus_out="$("$BIN" pane focus --direction "$DIRECTION" --current 2>&1 || true)"
+try_focus() {
+  local dir="$1"
+  local focus_out changed
+  focus_out="$("$BIN" pane focus --direction "$dir" --current 2>&1 || true)"
+  changed="$(printf '%s' "$focus_out" | jq -r '.result.focus.changed // .result.focus.reason // false' 2>/dev/null || echo false)"
+  [ "$changed" = "true" ]
+}
 
-changed="$(printf '%s' "$focus_out" | jq -r '.result.focus.changed // .result.focus.reason // false' 2>/dev/null || echo false)"
-if [ "$changed" = "true" ]; then
+if try_focus "$DIRECTION"; then
   exit 0
 fi
+
+# Horizontal keys also try vertical panes before falling back to tabs.
+case "$DIRECTION" in
+  left|right)
+    if try_focus up || try_focus down; then
+      exit 0
+    fi
+    ;;
+esac
 
 next_tab_id="$("$BIN" tab list 2>/dev/null |
   jq -r -c --arg cur "$HERDR_ACTIVE_TAB_ID" --arg dir "$DIRECTION" '
