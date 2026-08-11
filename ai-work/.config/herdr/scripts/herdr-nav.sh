@@ -12,17 +12,37 @@ try_focus() {
   [ "$changed" = "true" ]
 }
 
-# Prefer moving within the current vertical stack, then horizontally,
-# then fall back to tab switching. Unchanged directions pass through.
+# Prefer moving within the current vertical stack, then horizontally.
+# Exit as soon as a pane move succeeds so the tab fallback never fires.
 case "$DIRECTION" in
-  left)  try_focus up || try_focus left || true ;;
-  right) try_focus down || try_focus right || true ;;
-  up)    try_focus up || true ;;
-  down)  try_focus down || true ;;
+  left)
+    if try_focus up || try_focus left; then
+      exit 0
+    fi
+    ;;
+  right)
+    if try_focus down || try_focus right; then
+      exit 0
+    fi
+    ;;
+  up)
+    try_focus up && exit 0
+    ;;
+  down)
+    try_focus down && exit 0
+    ;;
 esac
 
-next_tab_id="$("$BIN" tab list 2>/dev/null |
-  jq -r -c --arg cur "$HERDR_ACTIVE_TAB_ID" --arg dir "$DIRECTION" '
+# Tab fallback: only within the active workspace; skip when unknown
+# (e.g. when run manually outside a custom keybinding).
+tab_id="${HERDR_ACTIVE_TAB_ID:-}"
+workspace_id="${HERDR_ACTIVE_WORKSPACE_ID:-}"
+if [ -z "$tab_id" ] || [ -z "$workspace_id" ]; then
+  exit 0
+fi
+
+next_tab_id="$("$BIN" tab list --workspace "$workspace_id" 2>/dev/null |
+  jq -r -c --arg cur "$tab_id" --arg dir "$DIRECTION" '
     .result.tabs as $tabs
     | ( [ $tabs[].tab_id ] | index($cur) ) as $idx
     | if $idx == null then empty
