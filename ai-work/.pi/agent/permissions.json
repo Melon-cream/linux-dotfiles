@@ -1,0 +1,59 @@
+{
+  "$schema": "./permissions.schema.json",
+  "bash": {
+    "*": "allow",
+    "rm -f *": "ask",
+    "rm -rf *": "ask",
+    "ntn pages create *": "ask",
+    "ntn pages delete *": "ask",
+    "wget *": "ask",
+    "apt *": "ask",
+    "apt-get *": "ask",
+    "sudo apt *": "ask",
+    "sudo apt-get *": "ask",
+    "npm install *": "ask",
+    "npm i *": "ask",
+    "npm uninstall *": "ask",
+    "npm publish *": "ask",
+    "yarn publish *": "ask",
+    "pnpm publish *": "ask",
+    "bun publish *": "ask",
+    "deno publish *": "ask",
+    "cargo publish *": "ask",
+    "gem push *": "ask",
+    "twine upload *": "ask",
+    "git push *": "ask",
+    "git push --force *": "ask",
+    "gh *": "ask"
+  },
+  "read": {
+    "*": "allow",
+    "**/.env": "deny",
+    "**/.env.*": "deny",
+    "~/.config/**": "ask",
+    "$HOME/.config/**": "ask",
+    "~/.ssh/*": "deny"
+  },
+  "write": {
+    "*": "allow",
+    "**/.env": "deny",
+    "**/.env.*": "deny",
+    "~/.config/**": "ask",
+    "$HOME/.config/**": "ask",
+    "/etc/wsl.conf": "deny"
+  },
+  "edit": {
+    "*": "allow",
+    "**/.env": "deny",
+    "**/.env.*": "deny",
+    "~/.config/**": "ask",
+    "$HOME/.config/**": "ask",
+    "/etc/wsl.conf": "deny"
+  },
+  "external_directory": {
+    "*": "allow"
+  },
+  "tools": {
+    "*": "allow"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pi agent permissions",
+  "description": "Permission rules enforced by the permissions.ts extension. Each section maps a glob pattern to an action. \"*\" is the fallback default within a section; the most specific (longest literal) matching pattern wins.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Points to this schema file for editor validation."
+    },
+    "bash": {
+      "$ref": "#/definitions/rules",
+      "description": "Glob patterns matched against the full bash command line."
+    },
+    "read": {
+      "$ref": "#/definitions/rules",
+      "description": "Glob patterns matched against the path argument of the read tool."
+    },
+    "write": {
+      "$ref": "#/definitions/rules",
+      "description": "Glob patterns matched against the path argument of the write tool."
+    },
+    "edit": {
+      "$ref": "#/definitions/rules",
+      "description": "Glob patterns matched against the path argument of the edit tool."
+    },
+    "external_directory": {
+      "$ref": "#/definitions/rules",
+      "description": "Applied in addition to the section rules when the path resolves outside the current working directory."
+    },
+    "tools": {
+      "$ref": "#/definitions/rules",
+      "description": "Glob patterns matched against tool names (e.g. MCP tools). Not needed for bash/read/write/edit, which have their own sections."
+    }
+  },
+  "definitions": {
+    "rules": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": ["allow", "ask", "deny"],
+        "description": "allow: run without prompting. ask: prompt the user first (blocked in non-interactive mode). deny: always block."
+      },
+      "description": "Glob pattern -> action. In path sections (read/write/edit/external_directory), a lone '*' matches any path, '*' matches within one path segment, '**' crosses segments, and '~' / '$HOME' are expanded."
+    }
+  }
+}

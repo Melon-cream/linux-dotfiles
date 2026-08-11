@@ -1,0 +1,41 @@
+{
+  "lastChangelogVersion": "0.84.1",
+  "theme": "dark",
+  "defaultProvider": "opencode",
+  "defaultModel": "deepseek-v4-flash-free",
+  "defaultThinkingLevel": "high",
+  "contextFiles": [
+    "AGENTS.md",
+    "~/.agents/skills/genshijin/SKILL.md"
+  ],
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-mcp-adapter",
+    "npm:pi-rtk-optimizer",
+    "npm:@johnnywu/pi-default-tools",
+    "npm:pi-hermes-memory",
+    "npm:@narumitw/pi-plan-mode",
+    "npm:pi-herdr-subagents",
+    "../../genshijin-pi"
+  ],
+  "tools": [
+    "...",
+    "grep",
+    "find",
+    "ls"
+  ],
+  "hideThinkingBlock": true,
+  "tuiMode": "fullscreen",
+  "skills": [
+    "-skills/skill-creator/SKILL.md",
+    "-~/.agents/skills/genshijin/SKILL.md",
+    "-~/.agents/skills/genshijin-help/SKILL.md",
+    "-~/.agents/skills/genshijin-review/SKILL.md",
+    "-~/.agents/skills/genshijin-crew/SKILL.md",
+    "-skills/genshijin/SKILL.md",
+    "-skills/genshijin-crew/SKILL.md",
+    "-skills/genshijin-help/SKILL.md",
+    "-skills/genshijin-review/SKILL.md",
+    "+skills/herdr/SKILL.md"
+  ]
+}
