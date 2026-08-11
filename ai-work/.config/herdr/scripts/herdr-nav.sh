@@ -12,17 +12,13 @@ try_focus() {
   [ "$changed" = "true" ]
 }
 
-if try_focus "$DIRECTION"; then
-  exit 0
-fi
-
-# Horizontal keys also try vertical panes before falling back to tabs.
+# Prefer moving within the current vertical stack, then horizontally,
+# then fall back to tab switching. Unchanged directions pass through.
 case "$DIRECTION" in
-  left|right)
-    if try_focus up || try_focus down; then
-      exit 0
-    fi
-    ;;
+  left)  try_focus up || try_focus left || true ;;
+  right) try_focus down || try_focus right || true ;;
+  up)    try_focus up || true ;;
+  down)  try_focus down || true ;;
 esac
 
 next_tab_id="$("$BIN" tab list 2>/dev/null |
