@@ -1,22 +1,24 @@
 {
   "lastChangelogVersion": "0.84.1",
   "theme": "dark",
-  "defaultProvider": "opencode",
-  "defaultModel": "deepseek-v4-flash-free",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "deepseek-v4-flash",
   "defaultThinkingLevel": "high",
   "contextFiles": [
     "AGENTS.md",
     "~/.agents/skills/genshijin/SKILL.md"
   ],
   "packages": [
-    "npm:pi-web-access",
     "npm:pi-mcp-adapter",
     "npm:pi-rtk-optimizer",
     "npm:@johnnywu/pi-default-tools",
     "npm:pi-hermes-memory",
     "npm:@narumitw/pi-plan-mode",
     "npm:pi-herdr-subagents",
-    "../../genshijin-pi"
+    "npm:pi-exa",
+    "npm:pi-ask-user-question",
+    "/home/user/.pi/agent/vendor/pi-roadmap",
+    "vendor/genshijin-pi"
   ],
   "tools": [
     "...",
