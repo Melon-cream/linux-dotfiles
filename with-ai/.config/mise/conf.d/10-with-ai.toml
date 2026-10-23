@@ -1,0 +1,11 @@
+[settings.write_targets]
+tools = "~/.confg/mise/conf.d/10-with-ai.toml"
+
+[tools]
+go = "latest"
+herdr = "latest"
+node = "lts"
+pi = "latest"
+rtk = "latest"
+uv = "latest"
+yazi = "latest"

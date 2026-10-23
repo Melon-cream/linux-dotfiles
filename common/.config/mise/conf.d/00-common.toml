@@ -1,0 +1,8 @@
+[settings.write_targets]
+tools = "~/.confg/mise/conf.d/00-common.toml"
+
+[tools]
+rust = "stable"
+sheldon = "latest"
+starship = "latest"
+tmux = "latest"
