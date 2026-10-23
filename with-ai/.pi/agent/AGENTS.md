@@ -14,12 +14,14 @@
 
 # 重要：作業の進め方
 
-1. タスク 3 ステップ以上 or ツールコール多数（ドキュメント・レポート含む）→ 着手前に pi-roadmap で .roadmap に計画を書き出し (plan.md + notes.md)。それ以外はチャットで方針説明。
-  - ユーザー提示のPLANファイルと pi-roadmap は別スコープのため、必ず作成すること。
-  - **勝手に作業を始めない** 実装は、ユーザーが /roadmap-approve を実行したことを検知してから開始する。検知 = 「roadmap approved: ...」の通知確認、またはユーザーの明示的な申告。計画作成・提示のみでは実装を開始しない。
-  - 計画ファイルの配置は `.roadmap/YYYY-MM-DD-<slug>/` 配下 (plan.md / notes.md / tasks.json) とする。`.roadmap/` 直下への直接配置は拡張機能が認識しない (roadmap-approve が "no active roadmap" になる)。進捗は plan.md のフェーズ状態を pi-roadmap のタスク (roadmap_create / roadmap_list / roadmap_get / roadmap_update) で管理する。
-  - .roadmap は gitignore に含める (commit 対象外)。
-2. 計画ファイル (plan.md) を作成しない場合でも、実装前にユーザーの承認 (明示的な OK / 実行指示) を求める。承認なしで実装を開始しない。
+1. タスク 3 ステップ以上 or ツールコール多数（ドキュメント・レポート含む）→ 着手前に pi-phase で .phases に計画を書き出し (phase.md + notes.md)。それ以外はチャットで方針説明。
+  - ユーザー提示のPLANファイルと pi-phase は別スコープのため、必ず作成すること。
+  - **勝手に作業を始めない** 実装は、ユーザーが /phase-approve を実行したことを検知してから開始する。検知 = 「phase approved: ...」の通知確認、またはユーザーの明示的な申告。計画作成・提示のみでは実装を開始しない。
+  - 計画ファイルの配置は `.phases/YYYY-MM-DD-<slug>/` 配下 (phase.md / notes.md / tasks.json) とする。phase.md は `### Phase N:` 形式のフェーズを含める。`.phases/` 直下への直接配置は拡張機能が認識しない (no active phase: phase.md not found になる)。進捗は phase.md のフェーズ状態を pi-phase のタスク (phase_create / phase_list / phase_get / phase_update) で管理する。タスク状態の変更は phase.md の状態行に自動反映される。
+  - セッション中に新規作成したプランは自動でアクティブ化される (通知「new phase detected — auto-selected」、/phase-select 不要)。phase_create で phase 番号を指定すると phase.md のフェーズ見出し (### Phase N:) が自動追加される。
+  - 注入コンテキストに「next:」(次に着手すべきタスク) と「stale:」(24h 以上更新のない in_progress タスク) が含まれる。phase_list は description の先頭 60 字を表示する。
+  - .phases は gitignore に含める (commit 対象外)。
+2. 計画ファイル (phase.md) を作成しない場合でも、実装前にユーザーの承認 (明示的な OK / 実行指示) を求める。承認なしで実装を開始しない。
 3. 進行応じて更新
 
 # 知見・memory
@@ -110,6 +112,7 @@
 # ブランチ・worktree 運用
 
 - main 直接作業禁止。作業ブランチ作成後 開発。
+- **local ブランチは外部公開しないが、開発記録の全履歴を記録する場所として保持し、削除しない。** main への squash 統合後も local ブランチは残す (開発履歴の保全)。
 - 並列作業 → git worktree 等で作業領域分離、コンフリクト防止。
 - 実装完了・テスト通過後 → 統合方針（マージ／リベース／squash 等）リポジトリ慣習に合わせ決定。
 

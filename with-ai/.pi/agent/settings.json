@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.84.1",
   "theme": "dark",
   "defaultProvider": "opencode-go",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultModel": "ox-alpha-free",
   "defaultThinkingLevel": "high",
   "contextFiles": [
     "AGENTS.md",
@@ -17,8 +17,9 @@
     "npm:pi-herdr-subagents",
     "npm:pi-exa",
     "npm:pi-ask-user-question",
-    "/home/user/.pi/agent/vendor/pi-roadmap",
-    "vendor/genshijin-pi"
+    "/home/user/.pi/agent/vendor/pi-phase",
+    "vendor/genshijin-pi",
+    "npm:pi-fff"
   ],
   "tools": [
     "...",
